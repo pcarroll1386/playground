@@ -1,11 +1,11 @@
 running = True
 
-def number_error():
+def number_error(message: str):
     print("*")
     print("*******************")
     print("*")
     print("* Oh you didn't listen did you?")
-    print("* I said a NUMBER! not a lettor or symbol!")
+    print(f"* {message}")
     print("* Listen to me!")
     print("* Now lets try again. A NUMBER between 1 and not a billion")
 
@@ -19,16 +19,27 @@ def get_number() -> int:
     while not valid:
         try:
             number = int(input("Enter the number here:"))
-            if number <= 999999999 and number >1:
+            if number <= 999999999 and number > 1:
                 print("*")
                 print("* Okay here we go!")
                 print("*")
                 print("*******************")
                 return number
-            else:
-                number_error()
-        except ValueError:
-            number_error()
+            elif number == 1000000000:
+                number_error("I said a number that is NOT a Billion!")
+            elif number > 1000000000:
+                number_error("Oh way to go. You found a loop hole in my launguage. CLAP CLAP. Now give me a number less than a Billion!")
+            elif number < 1:
+                number_error("I said a number Greater than 0!")
+        except ValueError as e:
+            try:
+                was_typed = e.args[0].split(":")[1]
+                was_typed = was_typed.replace("'", "").strip()
+                is_Float = float(was_typed)
+                number_error("Oh haha! I meant whole number and you know it!")
+            except ValueError:
+                number_error("I said a NUMBER! not a lettor or symbol!")
+
 
 def proccess_number(number: int) -> list[int]:
     factors = []
@@ -67,7 +78,7 @@ def report_findings(number: int, factors: list[int], is_prime: bool):
         print("*")
         print("* I know.... there, there, poor thing.")
         print("*")
-        print("* Now on to the fun news. The following numbers are all facors of {number}!")
+        print(f"* Now on to the fun news. The following numbers are all facors of {number}!")
         for n in factors:
             print("*")
             print(f"* {n}")
