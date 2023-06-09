@@ -58,8 +58,17 @@ public class Main {
                 }
             }
             catch (NumberFormatException ex){
-                System.out.println("*");
-                numberError("* Didn't you listen? I said a NUMBER. Not a Symbol or letter");
+                String message = ex.getMessage();
+                String[] messageParts = message.split(":");
+                message = messageParts[1];
+                message = message.replace("\"", "").strip();
+                try{
+                    float convertedMessage = Float.parseFloat(message);
+                    numberError("* Oh haha... very funny, you KNOW I meant whole number. come on!");
+                }catch (NumberFormatException e){
+                    System.out.println("*");
+                    numberError("* Didn't you listen? I said a NUMBER. Not a Symbol or letter");
+                }
             }
         }
         System.out.println("*");
