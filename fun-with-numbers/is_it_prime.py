@@ -19,7 +19,7 @@ def get_number() -> int:
     while not valid:
         try:
             number = int(input("Enter the number here:"))
-            if number <= 999999999 and number > 0:
+            if number <= 999999999 and number >1:
                 print("*")
                 print("* Okay here we go!")
                 print("*")
