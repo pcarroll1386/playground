@@ -77,11 +77,12 @@ def report_findings(number: int, factors: list[int], is_prime: bool):
 
 
     
-    
-
-
-if __name__ == "__main__":
+def run_program():
     number = get_number()
     factors = proccess_number(number)
     is_prime = check_if_prime(factors)
     report_findings(number=number, factors=factors, is_prime=is_prime)
+
+
+if __name__ == "__main__":
+    run_program()
