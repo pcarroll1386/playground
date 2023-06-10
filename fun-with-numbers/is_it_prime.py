@@ -1,5 +1,3 @@
-running = True
-
 def number_error(message: str):
     print("*")
     print("*******************")
@@ -50,12 +48,14 @@ def proccess_number(number: int) -> list[int]:
                 factors.append(x)
     return factors
 
+
 def check_if_prime(factors: list[int]) -> bool:
     if len(factors) >= 3:
         return False
     else:
         return True
     
+
 def report_findings(number: int, factors: list[int], is_prime: bool):
     print("*")
     print("* Okay! so I have crunched the numbers.... no need to check!")
@@ -76,7 +76,7 @@ def report_findings(number: int, factors: list[int], is_prime: bool):
     else:
         print(f"* Well I hate to break this to you, but {number} is not a prime number.")
         print("*")
-        print("* I know.... there, there, poor thing.")
+        print("* I know... there, there, poor thing.")
         print("*")
         print(f"* Now on to the fun news. The following numbers are all facors of {number}!")
         for n in factors:
@@ -87,7 +87,6 @@ def report_findings(number: int, factors: list[int], is_prime: bool):
     print("*******************")
 
 
-    
 def run_program():
     number = get_number()
     factors = proccess_number(number)
